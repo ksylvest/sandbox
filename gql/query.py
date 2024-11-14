@@ -4,7 +4,7 @@ import strawberry
 
 from models.user import User
 
-from gql.types.user_type import UserType
+from .types.user_type import UserType
 
 
 @strawberry.type
