@@ -14,7 +14,10 @@ jobs:
     steps:
       - checkout
       - python/install-packages
-      - run: pytest
+      - run: pytest  --junitxml=tmp/results.xml
+      - store_test_results:
+          path: tmp/results.xml
+
 workflows:
   version: 2.1
   build:
