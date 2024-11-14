@@ -15,11 +15,11 @@ class Query:
     def greeting(self, name: str) -> str:
         return f"Hello {name}!"
 
-    @strawberry.field
-    def users(self) -> List[UserType]:
+    @strawberry.field(graphql_type=List[UserType])
+    def users(self) -> List[User]:
         return User.all()
 
-    @strawberry.field
-    def user(self, info: strawberry.Info[Context], id: strawberry.ID) -> UserType:
+    @strawberry.field(graphql_type=UserType)
+    def user(self, info: strawberry.Info[Context], id: strawberry.ID):
         loader = info.context.user_loader
-        return loader.load(id)
+        return loader.load(int(id))
