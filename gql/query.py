@@ -20,6 +20,6 @@ class Query:
         return User.all()
 
     @strawberry.field
-    def user(self, info: strawberry.Info[Context], id: int) -> UserType:
+    def user(self, info: strawberry.Info[Context], id: strawberry.ID) -> UserType:
         loader = info.context.user_loader
         return loader.load(id)
