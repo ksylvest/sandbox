@@ -1,0 +1,22 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@2.2.0
+
+executors:
+  python:
+    docker:
+      - image: cimg/python:3.13
+
+jobs:
+  pytest:
+    executor: python
+    steps:
+      - checkout
+      - python/install-packages
+      - run: pytest
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - pytest
