@@ -1,2 +1,3 @@
 fastapi[standard]==0.115.5
 strawberry-graphql[fastapi]==0.248.1
+pytest==8.3.3
