@@ -1,5 +1,12 @@
 # Sandbox
 
+## Setup
+
+```bash
+pyenv install
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ```bash
