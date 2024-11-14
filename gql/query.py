@@ -2,6 +2,8 @@ from typing import List
 
 import strawberry
 
+from .context import Context
+
 from ..models.user import User
 
 from .types.user_type import UserType
@@ -18,6 +20,6 @@ class Query:
         return User.all()
 
     @strawberry.field
-    def user(self, info: strawberry.Info, id: int) -> UserType:
+    def user(self, info: strawberry.Info[Context], id: int) -> UserType:
         loader = info.context.user_loader
         return loader.load(id)
