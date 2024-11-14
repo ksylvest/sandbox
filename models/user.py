@@ -24,3 +24,8 @@ class User:
             if user.id == id:
                 return user
         return ValueError(f"unknown id={id}")
+
+    @classmethod
+    def filter(cls, ids: list[int]) -> list["User"]:
+        users = [cls.find(id) for id in ids]
+        return [user for user in users if not isinstance(user, ValueError)]
