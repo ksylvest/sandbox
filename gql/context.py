@@ -3,7 +3,7 @@ from strawberry.dataloader import DataLoader
 
 from .loaders.build_user_data_loader import build_user_data_loader
 
-from models.user import User
+from ..models.user import User
 
 
 class Context(BaseContext):

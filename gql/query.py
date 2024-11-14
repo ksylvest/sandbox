@@ -2,7 +2,7 @@ from typing import List
 
 import strawberry
 
-from models.user import User
+from ..models.user import User
 
 from .types.user_type import UserType
 
