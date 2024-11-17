@@ -9,17 +9,25 @@ executors:
       - image: cimg/python:3.13
 
 jobs:
+  mypy:
+    executor: python
+    steps:
+      - checkout
+      - python/install-packages
+      - run: mypy . --junit-xml=tmp/results.xml
+      - store_test_results:
+          path: tmp/results.xml
   pytest:
     executor: python
     steps:
       - checkout
       - python/install-packages
-      - run: pytest  --junitxml=tmp/results.xml
+      - run: pytest  --junit-xml=tmp/results.xml
       - store_test_results:
           path: tmp/results.xml
-
 workflows:
   version: 2.1
   build:
     jobs:
+      - mypy
       - pytest
