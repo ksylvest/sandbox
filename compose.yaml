@@ -9,5 +9,22 @@ services:
         - action: sync
           path: ./app
           target: /project/app
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
     ports:
       - "8000:8000"
+    depends_on:
+      - redis
+
+  worker:
+    build: .
+    command: celery --app app.worker.celery worker --loglevel=info
+    volumes:
+      - ./project:/usr/src/app
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
