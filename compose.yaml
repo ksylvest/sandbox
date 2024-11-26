@@ -1,13 +1,13 @@
 services:
   app:
     build: .
-    command: [ "fastapi", "dev", "--host", "0.0.0.0", "--port", "8000", "main.py" ]
+    command: [ "fastapi", "dev", "--host", "0.0.0.0", "--port", "8000", "app/main.py" ]
     develop:
       watch:
         - action: rebuild
           path: requirements.txt
         - action: sync
-          path: ./
-          target: /app
+          path: ./app
+          target: /project/app
     ports:
       - "8000:8000"
