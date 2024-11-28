@@ -7,8 +7,6 @@ RUN pip install -r requirements.txt
 
 COPY app app
 
-ARG PORT = 8000
-ENV PORT $PORT
+ENV PORT 8000
 EXPOSE $PORT
-
 CMD [ "fastapi", "run", "--host", "0.0.0.0", "--port", $PORT, "app/main.py" ]
