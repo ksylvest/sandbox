@@ -9,6 +9,12 @@ executors:
       - image: cimg/python:3.13
 
 jobs:
+  black:
+    executor: python
+    steps:
+      - checkout
+      - python/install-packages
+      - run: black --check .
   isort:
     executor: python
     steps:
@@ -35,6 +41,7 @@ workflows:
   version: 2.1
   build:
     jobs:
+      - black
       - isort
       - mypy
       - pytest
