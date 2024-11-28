@@ -1,5 +1,7 @@
-fastapi[standard]==0.115.5
-strawberry-graphql[fastapi]==0.248.1
-pytest==8.3.3
-mypy==1.13.0
+black==24.10.0
 celery[redis]==5.4.0
+fastapi[standard]==0.115.5
+isort==5.13.2
+mypy==1.13.0
+pytest==8.3.3
+strawberry-graphql[fastapi]==0.248.1
