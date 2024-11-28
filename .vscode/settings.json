@@ -6,5 +6,10 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit"
     }
+  },
+  "files.exclude": {
+    ".mypy*": true,
+    ".pytest*": true,
+    "**/__pycache__": true
   }
 }
