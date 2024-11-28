@@ -1,7 +1,6 @@
 import time
 
 from ..config.celery import celery
-
 from ..models.user import User
 
 

@@ -1,9 +1,8 @@
-from strawberry.fastapi import BaseContext
 from strawberry.dataloader import DataLoader
-
-from .loaders.build_user_data_loader import build_user_data_loader
+from strawberry.fastapi import BaseContext
 
 from ..models.user import User
+from .loaders.build_user_data_loader import build_user_data_loader
 
 
 class Context(BaseContext):
