@@ -1,7 +1,8 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@2.2.0
+  docker: circleci/docker@2.8.1
+  python: circleci/python@3.0.0
 
 executors:
   python:
@@ -9,18 +10,43 @@ executors:
       - image: cimg/python:3.13
 
 jobs:
+  deploy:
+    executor:
+      name: docker/machine
+      dlc: true
+    parameters:
+      image:
+        type: string
+        default: $CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+      tag:
+        type: string
+        default: latest
+    steps:
+      - checkout
+      - docker/check
+      - docker/build:
+          image: << parameters.image >>
+          tag: << parameters.tag >>
+          use-buildkit: true
+      - docker/push:
+          image: << parameters.image >>
+          tag: << parameters.tag >>
+      - run: curl $DEPLOY_URL
+
   black:
     executor: python
     steps:
       - checkout
       - python/install-packages
       - run: black --check app
+
   isort:
     executor: python
     steps:
       - checkout
       - python/install-packages
       - run: isort app/**/*.py -c
+
   mypy:
     executor: python
     steps:
@@ -29,6 +55,7 @@ jobs:
       - run: mypy app --junit-xml=tmp/results.xml
       - store_test_results:
           path: tmp/results.xml
+
   pytest:
     executor: python
     steps:
@@ -37,6 +64,7 @@ jobs:
       - run: pytest app  --junit-xml=tmp/results.xml
       - store_test_results:
           path: tmp/results.xml
+
 workflows:
   version: 2.1
   build:
@@ -45,3 +73,12 @@ workflows:
       - isort
       - mypy
       - pytest
+      - deploy:
+          requires:
+            - black
+            - isort
+            - mypy
+            - pytest
+          filters:
+            branches:
+              only: main
