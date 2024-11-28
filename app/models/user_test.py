@@ -14,8 +14,8 @@ def test_find_matching_id():
 
 
 def test_find_missing_id():
-    user = User.find(0)
-    assert isinstance(user, ValueError)
+    with pytest.raises(ValueError):
+        User.find(0)
 
 
 def test_filter():

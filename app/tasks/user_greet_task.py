@@ -5,12 +5,9 @@ from ..models.user import User
 
 
 @celery.task(name="user_greet_task")
-def user_greet_task(user_id: int):
+def user_greet_task(user_id: int, greeting: str) -> None:
     user = User.find(user_id)
 
-    if isinstance(user, ValueError):
-        raise user
-
     time.sleep(2)
-    print(f"Howdy {user.name}!")
+    print(f"{greeting} {user.name}!")
     time.sleep(2)

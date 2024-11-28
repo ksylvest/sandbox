@@ -19,11 +19,11 @@ class User:
         ]
 
     @classmethod
-    def find(cls, id: int) -> Union["User", ValueError]:
+    def find(cls, id: int) -> "User":
         for user in cls.all():
             if user.id == id:
                 return user
-        return ValueError(f"unknown id={id}")
+        raise ValueError(f"unknown id={id}")
 
     @classmethod
     def filter(cls, ids: list[int]) -> list["User"]:
