@@ -2,9 +2,9 @@ from typing import List
 
 import strawberry
 
-from ..models.user import User
-from .context import Context
-from .types.user_type import UserType
+from app.gql.context import Context
+from app.gql.types.user_type import UserType
+from app.models.user import User
 
 
 @strawberry.type

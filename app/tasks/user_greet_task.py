@@ -1,7 +1,7 @@
 import time
 
-from ..config.celery import celery
-from ..models.user import User
+from app.config.celery import celery
+from app.models.user import User
 
 
 @celery.task(name="user_greet_task")

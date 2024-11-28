@@ -1,8 +1,8 @@
 from strawberry.dataloader import DataLoader
 from strawberry.fastapi import BaseContext
 
-from ..models.user import User
-from .loaders.build_user_data_loader import build_user_data_loader
+from app.gql.loaders.build_user_data_loader import build_user_data_loader
+from app.models.user import User
 
 
 class Context(BaseContext):

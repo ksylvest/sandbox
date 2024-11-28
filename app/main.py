@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from strawberry.fastapi import GraphQLRouter
 
-from .gql.context import context
-from .gql.schema import schema
-from .tasks.user_greet_task import user_greet_task
+from app.gql.context import context
+from app.gql.schema import schema
+from app.tasks.user_greet_task import user_greet_task
 
 app = FastAPI()
 

@@ -1,7 +1,7 @@
 import strawberry
 
-from ..gql.mutations.user_mutations import UserMutations
-from ..models.user import User
+from app.gql.mutations.user_mutations import UserMutations
+from app.models.user import User
 
 
 @strawberry.type

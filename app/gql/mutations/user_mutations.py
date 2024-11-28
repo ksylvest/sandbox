@@ -1,7 +1,7 @@
 import strawberry
 
-from ...models.user import User
-from ...tasks.user_greet_task import user_greet_task
+from app.models.user import User
+from app.tasks.user_greet_task import user_greet_task
 
 
 @strawberry.type

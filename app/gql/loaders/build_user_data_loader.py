@@ -2,7 +2,7 @@ from typing import List, Union
 
 from strawberry.dataloader import DataLoader
 
-from ...models.user import User
+from app.models.user import User
 
 
 async def load_fn(keys: List[int]) -> List[Union[User, ValueError]]:
