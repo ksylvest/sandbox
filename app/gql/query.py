@@ -9,10 +9,6 @@ from app.models.user import User
 
 @strawberry.type
 class Query:
-    @strawberry.field
-    def greeting(self, name: str) -> str:
-        return f"Hello {name}!"
-
     @strawberry.field(graphql_type=List[UserType])
     def users(self) -> List[User]:
         return User.all()
