@@ -2,6 +2,7 @@
   "recommendations": [
     "ms-python.isort",
     "ms-python.python",
-    "ms-python.vscode-black"
+    "ms-python.vscode-black",
+    "ms-python.vscode-mypy",
   ]
 }
