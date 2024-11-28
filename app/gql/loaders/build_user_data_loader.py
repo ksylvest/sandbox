@@ -1,4 +1,5 @@
 from typing import List, Union
+
 from strawberry.dataloader import DataLoader
 
 from ...models.user import User

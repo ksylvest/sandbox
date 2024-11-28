@@ -2,10 +2,8 @@ from typing import List
 
 import strawberry
 
-from .context import Context
-
 from ..models.user import User
-
+from .context import Context
 from .types.user_type import UserType
 
 
