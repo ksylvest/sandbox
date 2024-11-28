@@ -13,4 +13,4 @@ class UserMutations:
 
     @strawberry.mutation
     def greet(self, greeting: str) -> None:
-        user_greet_task.delay(self.user.id, greeting)
+        user_greet_task.delay(user_id=self.user.id, greeting=greeting)
