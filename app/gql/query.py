@@ -11,7 +11,7 @@ from app.models.user import User
 class Query:
     @strawberry.field(graphql_type=List[UserType])
     def users(self) -> List[User]:
-        return User.all()
+        return User.select()
 
     @strawberry.field(graphql_type=UserType)
     def user(self, info: strawberry.Info[Context], id: strawberry.ID):

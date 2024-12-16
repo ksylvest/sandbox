@@ -4,6 +4,9 @@ fastapi[standard]==0.115.6
 invoke==2.2.0
 isort==5.13.2
 mypy==1.13.0
+peewee==3.17.8
 pytest-asyncio==0.25.0
 pytest==8.3.4
+psycopg[binary,pool]==3.2.3
 strawberry-graphql[fastapi]==0.254.0
+types-peewee==3.17.8.20241117

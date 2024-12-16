@@ -3,21 +3,16 @@ import pytest
 from app.models.user import User
 
 
-def test_all():
-    users = User.all()
-    assert len(users) > 0
+@pytest.fixture
+def test_user():
+    user = User.create(name="Ringo")
+    yield user
+    user.delete_instance()
 
 
-def test_find_matching_id():
-    user = User.find(3)
-    assert isinstance(user, User)
+def test_user_id():
+    assert test_user.id is not None
 
 
-def test_find_missing_id():
-    with pytest.raises(ValueError):
-        User.find(0)
-
-
-def test_filter():
-    users = User.filter(ids=[1, 2, 3])
-    assert len(users) == 3
+def test_user_name():
+    assert test_user.name == "Ringo"
