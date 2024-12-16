@@ -1,4 +1,7 @@
 __pycache__
+.circleci
+.github
+.vscode
 .pytest*
 .python-version
 /log/*
