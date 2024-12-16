@@ -1,14 +1,14 @@
 services:
   app:
     build: .
-    command: [ "fastapi", "dev", "--host", "0.0.0.0", "--port", "8000", "app/main.py" ]
+    command: [ "fastapi", "dev", "--host", "0.0.0.0", "--port", "8000", "main.py" ]
     develop:
       watch:
         - action: rebuild
           path: requirements.txt
         - action: sync
-          path: ./app
-          target: /project/app
+          path: .
+          target: /project/
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
     ports:
@@ -18,9 +18,14 @@ services:
 
   worker:
     build: .
-    command: celery --app app.worker.celery worker --loglevel=info
-    volumes:
-      - ./project:/usr/src/app
+    command: celery --app worker.celery worker --loglevel=info
+    develop:
+      watch:
+        - action: rebuild
+          path: requirements.txt
+        - action: sync
+          path: .
+          target: /project/
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
     depends_on:

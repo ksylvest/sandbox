@@ -38,21 +38,21 @@ jobs:
     steps:
       - checkout
       - python/install-packages
-      - run: black --check app
+      - run: black --check .
 
   isort:
     executor: python
     steps:
       - checkout
       - python/install-packages
-      - run: isort app/**/*.py -c
+      - run: isort **/*.py -c
 
   mypy:
     executor: python
     steps:
       - checkout
       - python/install-packages
-      - run: mypy app --junit-xml=tmp/results.xml
+      - run: mypy . --junit-xml=tmp/results.xml
       - store_test_results:
           path: tmp/results.xml
 
@@ -61,7 +61,7 @@ jobs:
     steps:
       - checkout
       - python/install-packages
-      - run: pytest app  --junit-xml=tmp/results.xml
+      - run: pytest .  --junit-xml=tmp/results.xml
       - store_test_results:
           path: tmp/results.xml
 
