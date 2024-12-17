@@ -8,6 +8,10 @@ executors:
   python:
     docker:
       - image: cimg/python:3.13.1
+      - image: cimg/postgres:17.0
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_HOST_AUTH_METHOD: trust
 
 jobs:
   deploy:
@@ -61,6 +65,8 @@ jobs:
     steps:
       - checkout
       - python/install-packages
+      - run: dockerize -wait tcp://localhost:5432 -timeout 2m # Postgres
+      - run: invoke setup
       - run: pytest .  --junit-xml=tmp/results.xml
       - store_test_results:
           path: tmp/results.xml

@@ -6,7 +6,7 @@ from app.models.user import User
 
 
 async def load_fn(keys: List[int]) -> List[Union[User, ValueError]]:
-    users = {user.id: user for user in User.filter(ids=keys)}
+    users = {user.id: user for user in User.select().where(User.id.in_(keys))}
 
     return [users.get(id, ValueError("missing id={id}")) for id in keys]
 

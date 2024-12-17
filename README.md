@@ -22,3 +22,11 @@ curl localhost:8000/up # {"Status":"OK"}
 ```bash
 invoke codegen
 ```
+
+```bash
+invoke setup
+```
+
+```bash
+invoke seed
+```
