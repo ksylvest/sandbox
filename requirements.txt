@@ -1,6 +1,6 @@
 black==25.1.0
 celery[redis]==5.4.0
-fastapi[standard]==0.115.7
+fastapi[standard]==0.115.8
 invoke==2.2.0
 isort==6.0.0
 mypy==1.14.1
