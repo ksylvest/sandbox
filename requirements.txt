@@ -2,7 +2,7 @@ black==25.9.0
 celery[redis]==5.5.3
 fastapi[standard]==0.118.3
 invoke==2.2.0
-isort==6.1.0
+isort==7.0.0
 mypy==1.18.2
 pytest-asyncio==1.2.0
 pytest==8.4.2
