@@ -5,5 +5,5 @@ invoke==3.0.3
 isort==8.0.1
 mypy==2.1.0
 pytest-asyncio==1.4.0
-pytest==9.1.0
+pytest==9.1.1
 strawberry-graphql[fastapi]==0.317.2
