@@ -6,4 +6,4 @@ isort==9.0.2
 mypy==2.4.1
 pytest-asyncio==1.4.1
 pytest==9.2.0
-strawberry-graphql[fastapi]==0.338.0
+strawberry-graphql[fastapi]==0.339.0
